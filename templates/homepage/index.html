@@ -1,0 +1,107 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexão Solidária</title>
+
+    <link rel="icon" type="image/png" sizes="16x16"  href="{% static 'homepage/homeFavicon.png' %}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
+    <!--Estilização-->
+    <link rel="stylesheet" href="{% static 'homepage/homeStyle.css' %}">
+
+
+</head>
+<body>
+    <header>
+            <nav class="navbar">
+
+        <!-- LOGO -->
+        <div class="logo">
+        <img class="img-logo" src="{% static 'homepage/homeLogo.svg' %}">
+        <a href="{% url 'url-home' %}" class="name-logo">Conexão Solidária</a>
+        </div>
+    
+        <!-- LINKS -->
+        <div>
+            <!-- NAVEGAÇÃO MENU -->
+            <ul class="nav-links">
+                <!-- CHECKBOX -->
+                <input type="checkbox" id="checkbox_toggle" />
+                <label for="checkbox_toggle" class="hamburger">&#9776; </label>
+                <!-- NAVEGAÇÃO MENUS -->
+                <div class="menu">
+                    <li><a class="itens" href="{% url 'url-class' %}">Sobre Nós</a></li>
+                    <li class="mob-buttons" ><a class="itens" href="{% url 'url-log' %}" id="login-header-button">Login</a></li>
+                    <li class="mob-buttons" ><a class="itens" href="{% url 'url-cad' %}" id="cad-header-button">Cadastrar</a></li>
+                    <li class="mob-buttons" ><a class="itens" href="#" style="display: none;" id="logout-header-button">Logout</a></li>
+                </div>
+            </ul>
+        </div>
+
+        <div class="menu">
+            <a class="nav-buttons" id="login-button" href="{% url 'url-log' %}">Login</a>
+            <a class="nav-buttons" id="cadastro-button" href="{% url 'url-cad' %}">Cadastrar</a>
+            <a class="nav-buttons" id="logout-button" href="#" style="display: none;">Logout</a>
+        </div>
+    
+    </nav>
+
+    </header>
+
+<div class="section">
+    <div class="sub-saction">
+       
+        <div class="content">
+            <div class="content-header">
+                <h1 class="title">Site de Cadastro e Login</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const user = localStorage.getItem('user');
+            console.log(user);
+            if (user) {
+                document.getElementById('login-header-button').style.display = 'none';
+                document.getElementById('cad-header-button').style.display = 'none';
+                document.getElementById('logout-header-button').style.display = 'block';
+    
+                document.getElementById('login-button').style.display = 'none';
+                document.getElementById('cadastro-button').style.display = 'none';
+                document.getElementById('logout-button').style.display = 'block';
+            }
+        });
+    
+        // Adiciona evento de clique ao botão de logout
+        document.getElementById('logout-button').addEventListener('click', () => {
+            localStorage.removeItem('user');
+            document.getElementById('login-header-button').style.display = 'block';
+            document.getElementById('cad-header-button').style.display = 'block';
+            document.getElementById('logout-header-button').style.display = 'none';
+    
+            document.getElementById('login-button').style.display = 'block';
+            document.getElementById('cadastro-button').style.display = 'block';
+            document.getElementById('logout-button').style.display = 'none';
+        });
+        document.getElementById('logout-header-button').addEventListener('click', () => {
+            localStorage.removeItem('user');
+            document.getElementById('login-header-button').style.display = 'block';
+            document.getElementById('cad-header-button').style.display = 'block';
+            document.getElementById('logout-header-button').style.display = 'none';
+    
+            document.getElementById('login-button').style.display = 'block';
+            document.getElementById('cadastro-button').style.display = 'block';
+            document.getElementById('logout-button').style.display = 'none';
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,130 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexão Solidária</title>
+
+    <link rel="icon" type="image/png" sizes="16x16"  href="{% static 'cadastro/cadFavicon.png' %}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
+    <!--Estilização-->
+    <link rel="stylesheet" href="{% static 'cadastro/cadStyle.css' %}">
+
+
+</head>
+<body>
+    
+<!--Cabeçalho-NÃO EDITE ISSO-->    
+    <header>
+        <nav class="navbar">
+
+            <!-- LOGO -->
+            <div class="logo">
+            <img class="img-logo" src="{% static 'cadastro/cadLogo.svg' %}">
+            <a href="{% url 'url-home' %}" class="name-logo">Conexão Solidária</a>
+            </div>
+        
+            <!-- LINKS -->
+            <div>
+                <!-- NAVEGAÇÃO MENU -->
+                <ul class="nav-links">
+                    <!-- CHECKBOX -->
+                    <input type="checkbox" id="checkbox_toggle" />
+                    <label for="checkbox_toggle" class="hamburger">&#9776; </label>
+                    <!-- NAVEGAÇÃO MENUS -->
+                    <div class="menu">
+                        <li><a class="itens" href="{% url 'url-class' %}">Sobre Nós</a></li>
+                        <li class="mob-buttons" ><a class="itens" href="{% url 'url-log' %}">Login</a></li>
+                        <li class="mob-buttons" ><a class="itens" href="{% url 'url-cad' %}">Cadastrar</a></li>
+                    </div>
+                </ul>
+            </div>
+
+            <div class="menu">
+                <a class="nav-buttons" href="{% url 'url-log' %}">Login</a>
+                <a class="nav-buttons" href="{% url 'url-cad' %}">Cadastrar</a>
+            </div>
+        
+    </nav>
+
+    </header>
+<!--Cabeçalho-NÃO EDITE ANTES DISSO--> 
+
+    <section class="section-form">
+
+        <div class="form-register">
+            
+         <form id="form" class= form-content action="{% url 'url-cad' %}" method="post">
+                {% csrf_token %}
+                <div class="form-header">
+                    <h1 class="title">Criar Nova Conta</h1>
+                </div>
+
+
+                <div class="input-group">
+    
+                    <div class="input-box">
+                        <span class="details">Nome:</span>
+                        <input id="nome" type="text" name="nome" maxlength="50"  required>
+                    </div>
+    
+                    <div class="input-box">
+                        <span class="details">Sobrenome:</span>
+                        <input id="sobrenome" type="text" name="sobrenome" maxlength="50" required>
+                    </div>
+    
+                    <div class="input-box">
+                        <span class="details">Dada de Nascimento:</span>
+                        <input id="data_de_nascimento" type="date" name="data_de_nascimento" required>
+                    </div>
+    
+                
+                    <div class="input-box">
+                        <span class="details">Nome de Usuário:</span>
+                        <input id="usuario" type="text" name="usuario" max required>
+                    </div>
+    
+                    <div class="input-box">
+                        <span class="details">Senha:</span>
+                        <input class="senha" onchange="confereSenha()"  type="password" name="senha" minlength="5" maxlength="10" placeholder="min: 5 caracteres" required>
+                    </div>
+    
+                    <div class="input-box">
+                        <span class="details">Confirme a senha:</span>
+                        <input class="conf-password" onchange="confereSenha()" type="password" name="confirm-password" minlength="5" maxlength="10"  required>
+                        
+                    </div>
+
+                </div>
+
+                <div class="msg-container"> 
+                    <p class="msg">Os dados serão usados para fins demonstrativos. Por favor, não forneça informações que possam comprometer sua privacidade.</p>
+                </div>
+    
+                <div class="form-button-container">
+                    <button type="submit" class="form-button">Cadastrar</button>
+                </div>
+                
+            </form>
+        </div>
+
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.querySelector('form'); 
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity()) {
+          window.location.href = "{% url 'url-log' %}"; 
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

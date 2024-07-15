@@ -1,0 +1,174 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexão Solidária</title>
+
+    <link rel="stylesheet" href="{% static 'login/LogStyle.css' %}">
+    
+    <link rel="icon" type="image/png" sizes="16x16"  href="{% static 'login/logFavicon.png' %}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+<body>
+  
+<!--Cabeçalho-NÃO EDITE ISSO-->
+<header>
+    <nav class="navbar">
+
+        <!-- LOGO -->
+        <div class="logo">
+        <img class="img-logo" src="{% static 'login/logLogo.svg' %}">
+        <a href="{% url 'url-home' %}" class="name-logo">Conexão Solidária</a>
+        </div>
+    
+        <!-- LINKS -->
+        <div>
+            <!-- NAVEGAÇÃO MENU -->
+            <ul class="nav-links">
+                <!-- CHECKBOX -->
+                <input type="checkbox" id="checkbox_toggle" />
+                <label for="checkbox_toggle" class="hamburger">&#9776; </label>
+                <!-- NAVEGAÇÃO MENUS -->
+                <div class="menu">
+                    <li><a class="itens" href="{% url 'url-class' %}">Sobre Nós</a></li>
+                    <li class="mob-buttons" ><a class="itens" href="{% url 'url-log' %}" id="login-header-button">Login</a></li>
+                    <li class="mob-buttons" ><a class="itens" href="{% url 'url-cad' %}" id="cad-header-button">Cadastrar</a></li>
+                    <li class="mob-buttons" ><a class="itens" href="#" style="display: none;" id="logout-header-button">Logout</a></li>
+                </div>
+            </ul>
+        </div>
+
+        <div class="menu">
+            <a class="nav-buttons" id="login-button" href="{% url 'url-log' %}">Login</a>
+            <a class="nav-buttons" id="cadastro-button" href="{% url 'url-cad' %}">Cadastrar</a>
+            <a class="nav-buttons" id="logout-button" href="#" style="display: none;">Logout</a> 
+        </div>
+        
+      
+    
+</nav>
+
+</header>
+<!--Cabeçalho-NÃO EDITE ANTES DISSO-->
+
+<!--Corpo-->
+
+<section class="section-form">
+    <div class="form-login">
+        <form id="form" class="form-content" action="{% url 'url-log' %}" method="post">
+            {% csrf_token %} <div class="form-header">
+            <h1 class="title">Login</h1>
+        </div>
+                {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+
+                    <div class="input-group">
+        
+                        <div class="input-box">
+                            <span class="details">Nome de Usuário:</span>
+                            <input id="username" type="text" name="username" max required>
+                        </div>
+        
+                        <div class="input-box">
+                            <span class="details">Senha:</span>
+                            <input class="password" onchange="confereSenha()"  type="password" name="password" minlength="5" maxlength="10"  required>
+                        </div>
+        
+                    </div>
+
+                    <div class="msg-container"> 
+                        <p class="msg">Os dados serão usados para fins demonstrativos. Por favor, não forneça informações que possam comprometer sua privacidade.</p>
+                    </div>
+        
+                    <div class="form-button-container">
+                        <button type="submit" class="form-button">Entrar</button>
+                    </div>
+                    
+                </form>
+            </div>
+
+    
+
+</section>
+<!--Corpo-->
+<script>
+    const form = document.getElementById('form');
+    window.addEventListener('load', () => {
+        const user = localStorage.getItem('user');
+        console.log(user);
+        if (user) {
+            document.getElementById('login-header-button').style.display = 'none';
+            document.getElementById('cad-header-button').style.display = 'none';
+            document.getElementById('logout-header-button').style.display = 'block';
+
+            document.getElementById('login-button').style.display = 'none';
+            document.getElementById('cadastro-button').style.display = 'none';
+            document.getElementById('logout-button').style.display = 'block';
+        }
+    });
+
+    // Adiciona evento de clique ao botão de logout
+    document.getElementById('logout-button').addEventListener('click', () => {
+        localStorage.removeItem('user');
+        document.getElementById('login-header-button').style.display = 'block';
+        document.getElementById('cad-header-button').style.display = 'block';
+        document.getElementById('logout-header-button').style.display = 'none';
+
+        document.getElementById('login-button').style.display = 'block';
+        document.getElementById('cadastro-button').style.display = 'block';
+        document.getElementById('logout-button').style.display = 'none';
+    });
+    document.getElementById('logout-header-button').addEventListener('click', () => {
+        localStorage.removeItem('user');
+        document.getElementById('login-header-button').style.display = 'block';
+        document.getElementById('cad-header-button').style.display = 'block';
+        document.getElementById('logout-header-button').style.display = 'none';
+
+        document.getElementById('login-button').style.display = 'block';
+        document.getElementById('cadastro-button').style.display = 'block';
+        document.getElementById('logout-button').style.display = 'none';
+    });
+
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault(); // Impede o envio padrão do formulário
+
+        const formData = new FormData(form);
+
+        fetch('{% url "url-log" %}', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                localStorage.setItem('user', data.user);
+                window.location.href = "{% url 'url-logado' %}"; // Redireciona para a página desejada
+            } else {
+                // Exibe a mensagem de erro
+                const messagesList = document.querySelector('.messages');
+                const messageItem = document.createElement('li');
+                messageItem.textContent = 'Usuário ou senha inválidos.';
+                messageItem.classList.add('error'); // Adiciona uma classe para estilizar a mensagem
+                messagesList.appendChild(messageItem);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
