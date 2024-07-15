@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap');
+
+*{
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  list-style: none;
+}
+
+body {
+  background-color: #D9D9D9;
+}
+
+header{
+  display: inline-block;
+  background:linear-gradient(#00000079, #00000000);
+  position: fixed;
+  width: 100%;
+  z-index: 99999;
+}
+
+.img-logo{
+  float: left;
+  width: 80px;
+  padding: 10px;
+  cursor: default;
+}
+
+.name-logo{
+  font-family: "Sofia Sans Condensed", sans-serif;
+  font-size: 35px;
+  color: #ffff;
+  font-weight:500;
+}
+
+.name-logo:hover{
+  transition: .2s;
+  transform: scale(1.05);
+}
+
+
+/* NAVBAR ESTILO */
+.navbar {
+  max-width: 1300px;
+  width: 100%;
+  height: 60px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  z-index: 99999;
+}
+
+/* LOGO */
+.logo{
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* NAVBAR MENU */
+.menu {
+  justify-content: space-between;
+  display: flex;
+  gap: 1em;
+  font-size: 15px;
+}
+.itens:hover {
+  transition: .2s;
+  box-shadow: 0 -3px 0px #ffffffc6 inset ;
+}
+
+.itens{
+  padding: 5px 14px;
+  color: #ffff;
+}
+
+.mob-buttons{
+  display: none;
+  color: #ffff;
+}
+
+.nav-buttons{
+  font-weight: 500;
+  color: #ffff;
+  margin: 5px;
+  padding: 6px 24px;
+  border: none;
+  background: #ffffff36;
+  border-radius: 6px;
+  cursor: pointer
+}
+
+
+.nav-buttons:hover{
+  background: #ffffffac;
+  color: #2f1175ee;
+  transition: .3s;
+}
+
+/* CHECKBOX HACK */
+#checkbox_toggle{
+  display: none;
+}
+
+/*HAMBURGER MENU*/
+.hamburger {
+  display: none;    
+  color: #ffff;
+  font-size: 24px;
+  user-select: none;
+  padding: 0px 4px;
+  margin-right: 15px;
+  border-radius: 3px;
+}
+
+.hamburger:hover{
+  background-color: #ffffff54;
+  transition: 0.3s;
+}
+
+
+/*EXTRA*/
+.banner {
+  background-image: url('img/Bg.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  width: 100%;
+  height: 60vh;
+  padding: 100px 20px;
+  margin-bottom: 16px;
+}
+.banner h1 {
+  font-size: 50px;
+  margin: 0;
+}
+.banner p {
+  font-size: 24px;
+  margin: 10px 0 0;
+}
+
+main{
+  padding: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+main img {
+  border-radius: 50px;
+  border:#1a093f solid;
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  
+}
+
+main div p{
+  font-size: 20px;
+  color: #1a093f;
+  text-align: center;
+  margin-top: 5px;
+
+}

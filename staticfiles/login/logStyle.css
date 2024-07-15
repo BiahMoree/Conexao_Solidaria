@@ -1,0 +1,368 @@
+/*Fosntes: Poppins, Sofia Fonts Condensed - Extra Condensed*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap');
+
+/*Layout - NÃO EDITE*/
+*{
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    list-style: none;
+}
+
+header{
+    display: inline-block;
+    background:linear-gradient(#2f1175, #1a093f);
+    position: fixed;
+    width: 100%;
+    z-index: 99999;
+}
+
+.img-logo{
+    float: left;
+    width: 80px;
+    padding: 10px;
+    cursor: default;
+}
+
+.name-logo{
+    font-family: "Sofia Sans Condensed", sans-serif;
+    font-size: 35px;
+    color: #ffff;
+    font-weight:500;
+}
+
+.name-logo:hover{
+    transition: .2s;
+    transform: scale(1.05);
+}
+
+
+/* NAVBAR ESTILO */
+.navbar {
+    max-width: 1300px;
+    width: 100%;
+    height: 60px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    z-index: 99999;
+}
+
+/* LOGO */
+.logo{
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* NAVBAR MENU */
+.menu {
+    justify-content: space-between;
+    display: flex;
+    gap: 1em;
+    font-size: 15px;
+}
+.itens:hover {
+    transition: .2s;
+    box-shadow: 0 -3px 0px #ffffffc6 inset ;
+}
+
+.itens{
+    padding: 5px 14px;
+    color: #ffff;
+}
+
+.mob-buttons{
+    display: none;
+    color: #ffff;
+}
+
+.nav-buttons{
+    font-weight: 500;
+    color: #ffff;
+    margin: 5px;
+    padding: 6px 24px;
+    border: none;
+    background: #ffffff36;
+    border-radius: 6px;
+    cursor: pointer
+}
+
+
+.nav-buttons:hover{
+    background: #ffffffac;
+    color: #2f1175ee;
+    transition: .3s;
+}
+
+/* CHECKBOX HACK */
+#checkbox_toggle{
+    display: none;
+}
+
+/*HAMBURGER MENU*/
+.hamburger {
+    display: none;    
+    color: #ffff;
+    font-size: 24px;
+    user-select: none;
+    padding: 0px 4px;
+    margin-right: 15px;
+    border-radius: 3px;
+}
+
+.hamburger:hover{
+    background-color: #ffffff54;
+    transition: 0.3s;
+}
+
+/*Cabeçalho - NÃO EDITE..*/
+
+
+
+/*..Corpo da página - é aqui onde você vai editar sua página*/
+
+/*..fundo*/
+.section-form{
+    top: 60px;
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background-image: url("./logBg.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.section-form:after{
+    position: fixed;
+    content: '';
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6)
+}
+
+
+
+/*fundo..*/
+
+/*..formulário*/
+ 
+.form-login{
+    position:absolute;
+    z-index: 101;
+    background: transparent;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.form-content{
+    max-width: 450px;
+    width: 100%;
+    background: #f4efffee;
+    position: absolute;
+    top: 60px;
+    padding: 25px;
+    border-radius: 20px;
+    overflow: hidden;
+    z-index: 101;
+}
+
+.form-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 25px;
+    
+}
+
+
+.title{
+    font-family: "Sofia Sans Condensed", sans-serif;
+    font-size: 44px;
+    color: #2f1175ee;
+}
+
+.input-group{
+
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+
+.input-box{
+    margin: 1px 0 12px 0;
+}
+
+.details{
+    font-size: 14px;
+    color: #555555;
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+
+}
+
+input{
+    height: 35px;
+    width: 100%;
+    outline: none;
+    border: 1px solid #adadadcc ;
+    border-radius: 8px;
+    padding-left: 15px;
+    font-size: 14px;
+}
+
+.form-button-container{
+    height: 45px;
+    margin: 20px 0;
+}
+
+.form-button{
+    height: 100%;
+    width: 100%;
+    color: #ffff;
+    border: none;
+    background: #2f1175ee;
+    border-radius: 8px;
+    cursor: pointer
+    
+}
+
+.form-button{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.form-button:hover{
+    background: #4b1db6ee;
+}
+
+.form-button:active{
+    transform: scale(0.95);
+}
+
+.msg{
+    font-size: 14px;
+    color: #424242;
+    margin-left: 15px;
+    cursor: default;
+}
+
+
+/*formulário..*/
+
+/*Corpo da página..*/
+
+/* APLICAÇÃO MEDIA QUERIES */
+@media (max-width: 970px) {
+
+    .nav-buttons{
+        display: none;
+    }
+
+    .mob-buttons{
+        display: block;
+        margin-top: 12px;
+    }
+
+    .menu {
+        height: 100vh;
+        width: 100%;
+        top: 60px;
+        display:none;
+        position: absolute;
+        background-color: #1a093ff8;
+        right: 0;
+        left: 0;
+        padding-bottom: 16px;
+        padding-top: 32px;
+        text-align:center;
+
+    }
+
+    .menu li + li {
+        margin-top: 12px;
+    }
+    input[type=checkbox]:checked ~ .menu{
+
+        display: block;
+    }
+
+    input[type=checkbox]:checked ~ .hamburger{
+        background-color: #ffffff54;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+
+    .form-content{
+        max-width: 1200px;
+        position: relative;
+        top: 0px;
+        padding: 100px;
+        border-radius: 0px;
+    }
+
+}
+
+
+@media (max-width:676px){
+
+    .form-content{
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+
+
+@media (max-width:416px){
+    .form-content{
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+}
+
+@media (max-width:410px){
+    .name-logo{
+        font-size: 30px;
+    }
+
+}
+
+@media (max-width:380px){
+
+    .name-logo{
+        font-size: 28px;
+    }
+}
+
+@media (max-width:360px){
+    .name-logo{
+        font-size: 25px;
+    }
+}
+
+@media (max-width:346px){
+    .name-logo{
+        font-size: 20px;
+    }
+
+    .img-logo{
+        width: 74px;
+        padding: 10px;
+       }
+
+}
